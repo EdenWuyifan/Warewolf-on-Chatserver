@@ -1,0 +1,134 @@
+ 狼人杀-Werewolf kill
+狼人杀（基于chatsystem）：
+
+server - 人数
+#type: g [room_number]
+
+If 房间人数4 - 10：
+	输入startgame
+	如果所有人都type Y:
+		game start
+Elif 房间人数小于4或大于10:
+	out_msg = "无法开始游戏（支持人数4-10人）"
+
+
+#分配角色Class：
+Characters = ["Wolf",""]
+
+Class Character(self, playerNumber, role, status["Dead" or "Alive"],round:''):
+	def __init__(self):
+		self.playerNumber = playerNumber
+		self.role = role
+		self.status = "Alive"
+		
+	def set_number(self, number):
+		self.playerNumber = number
+	def set_status(self, new_status):
+		self.status = new_status
+	def set_roll(self, new_roll):
+		self.roll = new_roll
+
+
+
+
+# 分配角色：
+server characters = {4:['citizen1','citizen2','wolf1','wolf2','witch'],5:[],6:[],7:[],8:[],9:[],10:[]}
+number = len(chat_group)
+game_roles = characters[number]
+assign_roles = {}
+for i in range(number):
+	game_roles.random.shuffle()
+	assign_roles[chat_group[I]] = game_roles[I]
+
+villager, wolf, prophet, witch, hunter
+4:[villager*2, wolf, prophet]
+5:[villager*2, wolf, prophet, witch]
+6:[villager*2, wolf, prophet, witch, hunter]
+7:[villager*2, wolf*2, prophet, witch, hunter]
+8:[villager*3, wolf*2, prophet, witch, hunter]
+9:[villager*4, wolf*2, prophet, witch, hunter]
+10:[villager*5, wolf*3, prophet, witch, hunter]
+10:[villager*5, wolf*3, prophet, witch, hunter]	
+
+
+#开始游戏
+Infos_old = {}
+For i in users:
+	Infos_old[i] = i.status()
+
+#大循环：游戏胜利失败判定(Cecilia帮我写一下这一块的判定！！！！)：
+while True:
+	status = {}
+	for I in users:
+		status[i.role()] = i.status()
+		
+	
+
+#角色行动 - 顺序：狼人 => 预言家 => 女巫 => 判定：（猎人）
+"Night is coming, please close your eyes"
+All characters: round: "action"
+#狼人杀人：创建狼人小群：输出kill player
+for user in Group:
+	if user.role == "wolf":
+		user.join(ChatGroupWolf)
+	if my_msg == "kill" + playerNumber：
+		playerNumber.set_status("Dead")
+		if playerNumber == '猎人':
+			mysend({status:"dead",msg:"You now can choose to kill another player:"})
+
+		for user in ChatGroupWolf:
+			user.disconnect()
+
+#预言家验人
+for user in Group:
+	if user.role == "prophet":
+		out_msg = "Choose a player to exam:"
+		out_msg += peer.player_number + " is " + peer.role
+
+#女巫：
+For user in Group:
+	if user.role == "witch":
+		self.out_msg += "Do you want to kill or save anyone? (Input kill or save or no)"
+	if "kill":
+		self.out_msg += "who do u wanna kill?"
+		if self.msg == playerNumber:
+			set_state: playerNumber.state = "dead"
+	elif "save":
+		self.out_msg += "who do u wanna save?"
+		if self.msg == playerNumber:
+			set_state: playerNumber.state = "alive"	
+	else:
+		continue
+
+"The sun has arisen, now enter the discussion."
+All player: round: "discussion"
+#猎人
+If self.status == "dead" and len(peer.msg) > 0:
+	self.out_msg += peer.msg
+
+For player in group:
+	if status != "dead":
+		self.out_msg += it's now your turn to say something
+    		mysend()
+
+"Now please vote"
+All player: round: "vote"
+For player in group:
+	if status != "dead":
+		self.out_msg += it's now your turn to vote
+    		mysend()
+Vote = {}
+If vote == playerNumber:
+	if playerNumber not in vote.keys():
+		vote[playerNumber] = 1
+	else:
+		vote[playerNumber] += 1
+
+self.status alive/dead， 控制能否说话
+self.gaming_state action/asleep, 控制round
+关于message action：
+gaming 只要self.status == 'alive', 就是在gaming状态
+Viewing dead
+
+Round: 控制消息的种类，同时控制player的gaming_state （kill&save控制player的status）
+Action, asleep, kill, save
