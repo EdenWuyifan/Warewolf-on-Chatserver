@@ -6,4 +6,4 @@ https://github.com/Cceciliaa/ICS-final-project.git
 ### Youtube Demo Portal:
 https://www.youtube.com/watch?v=VWntalFJcG4
 
-#### PPT demo is under this reposory!
+#### To run this demo and for further explanations, please go check *Werewolf PPT.pdf*
